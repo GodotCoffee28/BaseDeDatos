@@ -43,9 +43,9 @@
     INSERT INTO Persona VALUES (29,'PickeyPickey@gmail.com','pikipiki','2023/10/11', '1982/05/03','Edgardo Miranda');
     INSERT INTO Persona VALUES (30,'AlejandroFrki@gmail.com','FreakForeber','2024-01-04', '1998-05-06', 'Alejandro Torres'); 
 
-
+	-- id_usuario smallint NOT NULL,
+	    --tipo tipo_plan
 -- Inserts Usuarios
-    -- Usuarios 
     INSERT INTO Usuario VALUES (1, 'Gratis');
     INSERT INTO Usuario VALUES (2, 'Gratis');
     INSERT INTO Usuario VALUES (3, 'Gratis');
@@ -67,6 +67,9 @@
     INSERT INTO Usuario VALUES (18,'Gratis');
     INSERT INTO Usuario VALUES (19,'Premium');
     INSERT INTO Usuario VALUES (20,'Premium');
+
+	-- id_artista smallint NOT NULL,
+        -- biografia text
 
 -- Inserts Artistas
     -- Mixtos
@@ -111,49 +114,11 @@
     INSERT INTO Artista VALUES (29,'Joey Montana, cuyo nombre real es Edgardo Antonio Miranda Beiró, es un exitoso cantautor y productor panameño de música urbana. Nacido el 3 de mayo de 1982 en Chiriquí, Panamá, saltó a la fama internacional como miembro del icónico grupo La Factoría y luego consolidó su carrera como solista con grandes éxitos como "Picky".'); 
     -- Alejandro Torres
     INSERT INTO Artista VALUES (30,'Alejandro Torres Martín, conocido artísticamente como Keyblade, es un músico y creador de contenido español nacido el 6 de mayo de 1998 en Gran Canaria. Es una de las figuras más destacadas del "rap friki", famoso en YouTube por sus temas sobre videojuegos, anime y sus virales Épicas Batallas de Rap del Frikismo.'); 
-
--- Inserts Archivos_Audio
-INSERT INTO Archivo_Audio VALUES (1,);
-INSERT INTO Archivo_Audio VALUES (2,);
-INSERT INTO Archivo_Audio VALUES (3,);
-INSERT INTO Archivo_Audio VALUES (4,);
-INSERT INTO Archivo_Audio VALUES (5,);
-INSERT INTO Archivo_Audio VALUES (6,);
-INSERT INTO Archivo_Audio VALUES (7,);
-INSERT INTO Archivo_Audio VALUES (8,);
-INSERT INTO Archivo_Audio VALUES (9,);
-INSERT INTO Archivo_Audio VALUES (10,);
-INSERT INTO Archivo_Audio VALUES (11,);
-INSERT INTO Archivo_Audio VALUES (12,);
-INSERT INTO Archivo_Audio VALUES (13,);
-INSERT INTO Archivo_Audio VALUES (14,);
-INSERT INTO Archivo_Audio VALUES (15,);
-INSERT INTO Archivo_Audio VALUES (16,);
-INSERT INTO Archivo_Audio VALUES (17,);
-INSERT INTO Archivo_Audio VALUES (18,);
-INSERT INTO Archivo_Audio VALUES (19,);
-INSERT INTO Archivo_Audio VALUES (20,);
--- Inserts Canciones
-INSERT INTO Cancion VALUES (1,);
-INSERT INTO Cancion VALUES (2,);
-INSERT INTO Cancion VALUES (3,);
-INSERT INTO Cancion VALUES (4,);
-INSERT INTO Cancion VALUES (5,);
-INSERT INTO Cancion VALUES (6,);
-INSERT INTO Cancion VALUES (7,);
-INSERT INTO Cancion VALUES (8,);
-INSERT INTO Cancion VALUES (9,);
-INSERT INTO Cancion VALUES (10,);
-INSERT INTO Cancion VALUES (11,);
-INSERT INTO Cancion VALUES (12,);
-INSERT INTO Cancion VALUES (13,);
-INSERT INTO Cancion VALUES (14,);
-INSERT INTO Cancion VALUES (15,);
-INSERT INTO Cancion VALUES (16,);
-INSERT INTO Cancion VALUES (17,);
-INSERT INTO Cancion VALUES (18,);
-INSERT INTO Cancion VALUES (19,);
-INSERT INTO Cancion VALUES (20,);
+	
+    -- id_album smallint NOT NULL,
+        -- id_artista_album smallint NOT NULL,
+        -- titulo varchar(20),
+        -- fecha_lanzamiento date,
 -- Inserts Album
 INSERT INTO Album VALUES (1,);
 INSERT INTO Album VALUES (2,);
@@ -175,6 +140,108 @@ INSERT INTO Album VALUES (17,);
 INSERT INTO Album VALUES (18,);
 INSERT INTO Album VALUES (19,);
 INSERT INTO Album VALUES (20,);
+
+	-- id_cancion smallint NOT NULL,
+        -- id_album_cancion smallint NOT NULL,
+        -- titulo varchar(20),
+        -- genero varchar(20),
+        -- duracion_seg smallint
+-- Inserts Canciones
+INSERT INTO Cancion VALUES (1,1,);
+INSERT INTO Cancion VALUES (2,1,);
+INSERT INTO Cancion VALUES (3,1,);
+INSERT INTO Cancion VALUES (4,2,);
+INSERT INTO Cancion VALUES (5,2,);
+INSERT INTO Cancion VALUES (6,3,);
+INSERT INTO Cancion VALUES (7,3,);
+INSERT INTO Cancion VALUES (8,3,);
+INSERT INTO Cancion VALUES (9,4,);
+INSERT INTO Cancion VALUES (10,4,);
+INSERT INTO Cancion VALUES (11,4,);
+INSERT INTO Cancion VALUES (12,5,);
+INSERT INTO Cancion VALUES (13,5,);
+INSERT INTO Cancion VALUES (14,6,);
+INSERT INTO Cancion VALUES (15,6,);
+
+INSERT INTO Cancion VALUES (16,7,);
+INSERT INTO Cancion VALUES (17,7);
+INSERT INTO Cancion VALUES (18,7,);
+INSERT INTO Cancion VALUES (19,8,);
+INSERT INTO Cancion VALUES (20,8,);
+INSERT INTO Cancion VALUES (21,9,);
+INSERT INTO Cancion VALUES (22,9,);
+INSERT INTO Cancion VALUES (23,10,);
+INSERT INTO Cancion VALUES (24,10,);
+INSERT INTO Cancion VALUES (25,11,);
+INSERT INTO Cancion VALUES (26,11,);
+INSERT INTO Cancion VALUES (27,11,);
+INSERT INTO Cancion VALUES (28,12,);
+INSERT INTO Cancion VALUES (29,12,);
+INSERT INTO Cancion VALUES (30,13,);
+INSERT INTO Cancion VALUES (31,13,);
+INSERT INTO Cancion VALUES (32,14,);
+INSERT INTO Cancion VALUES (33,14,);
+INSERT INTO Cancion VALUES (34,15,);
+INSERT INTO Cancion VALUES (35,15,);
+INSERT INTO Cancion VALUES (36,16,);
+INSERT INTO Cancion VALUES (37,17,);
+INSERT INTO Cancion VALUES (38,18,);
+INSERT INTO Cancion VALUES (39,19,);
+INSERT INTO Cancion VALUES (40,20);
+
+	-- id_audio smallint NOT NULL,
+        -- id_cancion_audio smallint NOT NULL,
+        -- URL text,
+        -- tamanio decimal,
+        -- formato varchar(10),
+        -- ubicacion text,
+        -- calidad text,
+
+-- Inserts Archivos_Audio
+INSERT INTO Archivo_Audio VALUES (1,1);
+INSERT INTO Archivo_Audio VALUES (2,2);
+INSERT INTO Archivo_Audio VALUES (3,3);
+INSERT INTO Archivo_Audio VALUES (4,4);
+INSERT INTO Archivo_Audio VALUES (5,5);
+INSERT INTO Archivo_Audio VALUES (6,6);
+INSERT INTO Archivo_Audio VALUES (7,7);
+INSERT INTO Archivo_Audio VALUES (8,8);
+INSERT INTO Archivo_Audio VALUES (9,9);
+INSERT INTO Archivo_Audio VALUES (10,10);
+INSERT INTO Archivo_Audio VALUES (11,11);
+INSERT INTO Archivo_Audio VALUES (12,12);
+INSERT INTO Archivo_Audio VALUES (13,13);
+INSERT INTO Archivo_Audio VALUES (14,14);
+INSERT INTO Archivo_Audio VALUES (15,15);
+INSERT INTO Archivo_Audio VALUES (16,16);
+INSERT INTO Archivo_Audio VALUES (17,17);
+INSERT INTO Archivo_Audio VALUES (18,18);
+INSERT INTO Archivo_Audio VALUES (19,19);
+INSERT INTO Archivo_Audio VALUES (20,20);
+INSERT INTO Archivo_Audio VALUES (21,21);
+INSERT INTO Archivo_Audio VALUES (22,22);
+INSERT INTO Archivo_Audio VALUES (23,23);
+INSERT INTO Archivo_Audio VALUES (24,24);
+INSERT INTO Archivo_Audio VALUES (25,25);
+INSERT INTO Archivo_Audio VALUES (26,26);
+INSERT INTO Archivo_Audio VALUES (27,27);
+INSERT INTO Archivo_Audio VALUES (28,28);
+INSERT INTO Archivo_Audio VALUES (29,29);
+INSERT INTO Archivo_Audio VALUES (30,30);
+INSERT INTO Archivo_Audio VALUES (31,31);
+INSERT INTO Archivo_Audio VALUES (32,32);
+INSERT INTO Archivo_Audio VALUES (33,33);
+INSERT INTO Archivo_Audio VALUES (34,34);
+INSERT INTO Archivo_Audio VALUES (35,35);
+INSERT INTO Archivo_Audio VALUES (36,36);
+INSERT INTO Archivo_Audio VALUES (37,37);
+INSERT INTO Archivo_Audio VALUES (38,38);
+INSERT INTO Archivo_Audio VALUES (39,39);
+INSERT INTO Archivo_Audio VALUES (40,40);
+
+	-- id_playlist smallint NOT NULL,
+        -- nombre varchar(20),
+        -- descripcion text,
 -- Inserts Playlist
 INSERT INTO Playlist VALUES (1,);
 INSERT INTO Playlist VALUES (2,);
@@ -197,6 +264,8 @@ INSERT INTO Playlist VALUES (18,);
 INSERT INTO Playlist VALUES (19,);
 INSERT INTO Playlist VALUES (20,);
 
+	-- id_usuario_escucha smallint NOT NULL,
+	    -- id_playlist_escucha smallint NOT NULL,
 --Inserts Escucha
 INSERT INTO Escucha VALUES ();
 INSERT INTO Escucha VALUES ();
@@ -219,7 +288,8 @@ INSERT INTO Escucha VALUES ();
 INSERT INTO Escucha VALUES ();
 INSERT INTO Escucha VALUES ();
 INSERT INTO Escucha VALUES ();
-
+	-- id_playlist_contiene smallint NOT NULL,
+	    -- id_cancion_contiene smallint NOT NULL, 
 -- Inserts Contiene
 INSERT INTO Contiene VALUES ();
 INSERT INTO Contiene VALUES ();
