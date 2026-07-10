@@ -1,7 +1,7 @@
--- Triggers --
+---Triggers---
 
 -- Usuario Gratis sin mas de 3 playlist -- 
-	--  Trigger de Escucha -- 
+DROP TRIGGER IF EXISTS verificar_cantidad_playlist_usuario_gratis ON Escucha;
 CREATE OR REPLACE FUNCTION verificar_cantidad_playlist_usuario_gratis()
 	RETURNS TRIGGER
 	LANGUAGE 'plpgsql'
@@ -17,32 +17,30 @@ BEGIN
 	FROM Usuario
 	WHERE id_usuario = NEW.id_usuario_escucha;
 
-	IF tipousuario = 'Premiun' THEN
-		RETURN NEW; -- Se retorna la nueva insersion como si nada
+	IF tipousuario = 'Premium' THEN
+		RETURN NEW; -- Se retorna la nueva insersión como si nada
 	END IF;
 
 	-- Si llegamos aqui signifca que el usuario es Gratis y contaremos cuantas playlist tiene hasta ahora
 	SELECT COUNT(*) INTO cantidadplaylist
 	FROM Escucha -- Cada vez que aparece el id_usuario en Escucha significa que tiene una playlist asociada
-	WHERE id_usuario = NEW.id_usuario_escucha;
+	WHERE id_usuario_escucha = NEW.id_usuario_escucha;
 
 	IF(cantidadplaylist >= 3 ) THEN
-		RAISE EXCEPTION 'Error, un usuario Gratis no puede tener más de 3 playlist';
+		RAISE EXCEPTION '| Error - Un usuario gratis no puede tener más de 3 playlist |';
 	END IF;	
 	RETURN NEW;
 END;
 $$;
 
 CREATE TRIGGER verificar_cantidad_playlist_usuario_gratis
-BEFORE INSERT ON escucha
+BEFORE INSERT ON Escucha
 FOR EACH ROW
 EXECUTE FUNCTION verificar_cantidad_playlist_usuario_gratis();
 
 
--- Usuario Gratis sin mas de 3 playlist -- 
+---Garantizar que solo se añadan canciones reproducibles---
 
--- Garantizar que solo se añadan canciones reproducibles --
-	-- Trigger de Escucha -- 
 DROP TRIGGER IF EXISTS verificar_cancion_reproducible ON Contiene;
 CREATE OR REPLACE FUNCTION verificar_cancion_reproducible()
 	RETURNS TRIGGER
@@ -68,5 +66,4 @@ CREATE TRIGGER verificar_cancion_reproducible
 BEFORE INSERT ON Contiene
 FOR EACH ROW
 EXECUTE FUNCTION verificar_cancion_reproducible();
-
--- Garantizar que solo se añadan canciones reproducibles --
+---Garantizar que solo se añadan canciones reproducibles---

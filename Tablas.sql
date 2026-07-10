@@ -100,5 +100,4 @@ CREATE TABLE Contiene(
 	
 	PRIMARY KEY(id_playlist_contiene, id_cancion_contiene),
 	FOREIGN KEY(id_playlist_contiene) REFERENCES Playlist(id_playlist) ON DELETE CASCADE,
-	FOREIGN KEY(id_cancion_contiene) REFERENCES Cancion(id_cancion) ON DELETE CASCADE
-);
+	FOREIGN KEY(id_cancion_contiene) REFERENCES Cancion(id_cancion) ON DELETE CASCADE);
