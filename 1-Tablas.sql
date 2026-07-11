@@ -42,10 +42,12 @@ CREATE TABLE Artista(
 
 CREATE TABLE Playlist(
 	id_playlist smallint NOT NULL,
+	id_usuario_creador smallint NOT NULL,
 	nombre varchar(20),
 	descripcion text,
 
 	PRIMARY KEY(id_playlist)
+	FOREIGN KEY (id_usuario_creador) REFERENCES Usuario(id_usuario)
 );
 
 

@@ -83,7 +83,7 @@
     -- Jacques Webster
     INSERT INTO Artista VALUES (15,'Travis Scott, nacido como Jacques Bermon Webster II el 30 de abril de 1991 en Houston, Texas, es un rapero, cantante y productor estadounidense. Famoso por su estilo psicodélico y energéticas presentaciones, fundó el sello discográfico Cactus Jack Records y ha lanzado discos icónicos como Rodeo, Astroworld y Utopia.'); 
     -- Michael Jackson
-    INSERT INTO Artista VALUES (16,'Michael Joseph Jackson (1958–2009) fue un cantante, compositor y bailarín estadounidense apodado el «Rey del Pop». Comenzó su carrera musical en 1964 en The Jackson 5, logrando el estrellato mundial gracias a éxitos como ABC. Transformó la industria con álbumes como Thriller (1982) y popularizó pasos de baile como el moonwalk.'); 
+    INSERT INTO Artista VALUES (16,'Michael Joseph Jackson (1958-2009) fue un cantante, compositor y bailarín estadounidense apodado el «Rey del Pop». Comenzó su carrera musical en 1964 en The Jackson 5, logrando el estrellato mundial gracias a éxitos como ABC. Transformó la industria con álbumes como Thriller (1982) y popularizó pasos de baile como el moonwalk.'); 
     -- Miguel Martos
     INSERT INTO Artista VALUES (17,'Miguel Ángel Martos Bello, conocido artísticamente como Zarcort (nacido el 1 de febrero de 1991 en Almería, España), es un destacado rapero, compositor y creador de contenido, pionero en la creación de rap y rap-plays basados en videojuegos.'); 
     -- Juan Ozuna
@@ -165,7 +165,7 @@ INSERT INTO Album VALUES (20,30, 'Planeta Corazón', '2022-06-16');
 
 --Adam Met
 INSERT INTO Cancion VALUES (1,1, 'Bud Like You', 'Indie Pop', 230);
-INSERT INTO Cancion VALUES (2,1, ' Turning Out', 'Indie Pop', 266);
+INSERT INTO Cancion VALUES (2,1, 'Turning Out', 'Indie Pop', 266);
 INSERT INTO Cancion VALUES (3,1, 'Sober Up', 'Indie Pop', 231);
 
 INSERT INTO Cancion VALUES (4,2, 'Blackout', 'Art Rock', 220);
@@ -289,75 +289,147 @@ INSERT INTO Archivo_Audio VALUES (39,39, 'https://ucvmusic.ucv.ve/stream/caramel
 INSERT INTO Archivo_Audio VALUES (40,40, 'https://ucvmusic.ucv.ve/stream/laschicasmeignoran.mp3', 3.7, 'mp3', '/var/www/ucvmusic/media/keyblade/las_chicas_me_ignoran.mp3', '320kbps');
 
 	-- id_playlist smallint NOT NULL,
-        -- nombre varchar(20),
-        -- descripcion text,
+	    -- id_usuario_creador smallint NOT NULL,
+	    -- nombre varchar(20),
+	    -- descripcion text,
 -- Inserts Playlist
-INSERT INTO Playlist VALUES (1,);
-INSERT INTO Playlist VALUES (2,);
-INSERT INTO Playlist VALUES (3,);
-INSERT INTO Playlist VALUES (4,);
-INSERT INTO Playlist VALUES (5,);
-INSERT INTO Playlist VALUES (6,);
-INSERT INTO Playlist VALUES (7,);
-INSERT INTO Playlist VALUES (8,);
-INSERT INTO Playlist VALUES (9,);
-INSERT INTO Playlist VALUES (10,);
-INSERT INTO Playlist VALUES (11,);
-INSERT INTO Playlist VALUES (12,);
-INSERT INTO Playlist VALUES (13,);
-INSERT INTO Playlist VALUES (14,);
-INSERT INTO Playlist VALUES (15,);
-INSERT INTO Playlist VALUES (16,);
-INSERT INTO Playlist VALUES (17,);
-INSERT INTO Playlist VALUES (18,);
-INSERT INTO Playlist VALUES (19,);
-INSERT INTO Playlist VALUES (20,);
+INSERT INTO Playlist VALUES (1,1,'Musica genial','Musica variada y con varios géneros para oír ');
+INSERT INTO Playlist VALUES (2,1,'Hip-Hop y Rap',' Playlist Dedicada especialmente a rap y hiphop de los mejores');
+INSERT INTO Playlist VALUES (3,1,'Musica  sabor latino','Lo mejor del mundo: Musica y la escencia latina');
+INSERT INTO Playlist VALUES (4,2,'Reggeaton del viejo','Son como el vino: Mientras más pasa el tiempo mejor se ponen');
+INSERT INTO Playlist VALUES (5,2,'2','solo 2');
+INSERT INTO Playlist VALUES (6,3,'In english, please',' only songs in english');
+INSERT INTO Playlist VALUES (7,4,'Animales','Animales?');
+INSERT INTO Playlist VALUES (8,5,'El rey del pop','Nada más ni nada menos que Michael Jackson');
+INSERT INTO Playlist VALUES (9,6,'Como cuando eres un carro','Dame más gasolina');
+INSERT INTO Playlist VALUES (10,6,'Como cuando eres un delito','El chantaje');
+INSERT INTO Playlist VALUES (11,6,'El negrito ojos claros','ozuna baby');
+INSERT INTO Playlist VALUES (12,6,'Romance, amor y traicion',' Dedicado a todas esas canciones que hablen de amor y decepciones');
+INSERT INTO Playlist VALUES (13,7,'Tristeza','Canciones muy tristes :(');
+INSERT INTO Playlist VALUES (14,8,'Locura','Musica anormal, rara y loca');
+INSERT INTO Playlist VALUES (15,9,'Dulce','Los caramelos son geniales');
+INSERT INTO Playlist VALUES (16,9,'Amantes del (t)rap','musica donde el genero principal es el rap y el trap');
+INSERT INTO Playlist VALUES (18,10,'Frikis','canciones de artistas frikis pero por alguna razon alguien eligió canciones muy alejadas de sus canciones principales');
+INSERT INTO Playlist VALUES (17,10,'Mexicanos de corazon','Canciones mexicanas');
+INSERT INTO Playlist VALUES (19,10,'Oscuridad','Canciones oscuras');
+INSERT INTO Playlist VALUES (20,11,'Lo que sea ','Cualquier cosa');
+INSERT INTO Playlist VALUES (21,12,'Movimiento','Musica para bailar y sentir el ritmo');
+INSERT INTO Playlist VALUES (22,13,'Musica pop','Musica para todos o quizás para nadie');
+INSERT INTO Playlist VALUES (23,13,'Musica alternativa','diferente y quizas le guste');
+INSERT INTO Playlist VALUES (24,13,'Contraste','Musica que contrasta entre si');
+INSERT INTO Playlist VALUES (25,14,'Motivacion','Musica que te motiva');
+INSERT INTO Playlist VALUES (26,15,'Lo mejor de la musica','Solo lo mejor de lo mejor');
+INSERT INTO Playlist VALUES (27,16,'Rencor','Musica con mucho rencor o molestia');
+INSERT INTO Playlist VALUES (28,17,'Ojo con las canciones','Triple ojo pelao');
+INSERT INTO Playlist VALUES (29,18,'Multigenero','Varias canciones muchos generos');
+INSERT INTO Playlist VALUES (30,18,'Como cuando te preparas','se preparó');
 
-	-- id_usuario_escucha smallint NOT NULL,
-	    -- id_playlist_escucha smallint NOT NULL,
 --Inserts Escucha
-INSERT INTO Escucha VALUES ();
-INSERT INTO Escucha VALUES ();
-INSERT INTO Escucha VALUES ();
-INSERT INTO Escucha VALUES ();
-INSERT INTO Escucha VALUES ();
-INSERT INTO Escucha VALUES ();
-INSERT INTO Escucha VALUES ();
-INSERT INTO Escucha VALUES ();
-INSERT INTO Escucha VALUES ();
-INSERT INTO Escucha VALUES ();
-INSERT INTO Escucha VALUES ();
-INSERT INTO Escucha VALUES ();
-INSERT INTO Escucha VALUES ();
-INSERT INTO Escucha VALUES ();
-INSERT INTO Escucha VALUES ();
-INSERT INTO Escucha VALUES ();
-INSERT INTO Escucha VALUES ();
-INSERT INTO Escucha VALUES ();
-INSERT INTO Escucha VALUES ();
-INSERT INTO Escucha VALUES ();
-INSERT INTO Escucha VALUES ();
+INSERT INTO Escucha VALUES (1,1);
+INSERT INTO Escucha VALUES (1,2);
+INSERT INTO Escucha VALUES (1,3);
+INSERT INTO Escucha VALUES (1,4);
+INSERT INTO Escucha VALUES (2,3);
+INSERT INTO Escucha VALUES (2,4);
+INSERT INTO Escucha VALUES (2,5);
+INSERT INTO Escucha VALUES (3,6);
+INSERT INTO Escucha VALUES (4,7);
+INSERT INTO Escucha VALUES (5,7);
+INSERT INTO Escucha VALUES (5,8);
+INSERT INTO Escucha VALUES (6,10);
+INSERT INTO Escucha VALUES (7,11);
+INSERT INTO Escucha VALUES (7,12);
+INSERT INTO Escucha VALUES (7,13);
+INSERT INTO Escucha VALUES (8,14);
+INSERT INTO Escucha VALUES (8,2);
+INSERT INTO Escucha VALUES (9,15);
+INSERT INTO Escucha VALUES (9,16);
+INSERT INTO Escucha VALUES (9,17);
+INSERT INTO Escucha VALUES (10,17);
+INSERT INTO Escucha VALUES (10,18);
+INSERT INTO Escucha VALUES (11,19);
+INSERT INTO Escucha VALUES (11,20);
+INSERT INTO Escucha VALUES (12,15);
+INSERT INTO Escucha VALUES (12,21);
+INSERT INTO Escucha VALUES (13,22);
+INSERT INTO Escucha VALUES (14,25);
+INSERT INTO Escucha VALUES (15,26);
+INSERT INTO Escucha VALUES (16,27);
+INSERT INTO Escucha VALUES (16,23);
+INSERT INTO Escucha VALUES (17,21);
+INSERT INTO Escucha VALUES (17,28);
+INSERT INTO Escucha VALUES (18,29);
+INSERT INTO Escucha VALUES (18,30);
+INSERT INTO Escucha VALUES (19,5);
+INSERT INTO Escucha VALUES (19,6);
+INSERT INTO Escucha VALUES (20,7);
+INSERT INTO Escucha VALUES (20,8);
+INSERT INTO Escucha VALUES (20,3);
+
 	-- id_playlist_contiene smallint NOT NULL,
 	    -- id_cancion_contiene smallint NOT NULL, 
 -- Inserts Contiene
-INSERT INTO Contiene VALUES ();
-INSERT INTO Contiene VALUES ();
-INSERT INTO Contiene VALUES ();
-INSERT INTO Contiene VALUES ();
-INSERT INTO Contiene VALUES ();
-INSERT INTO Contiene VALUES ();
-INSERT INTO Contiene VALUES ();
-INSERT INTO Contiene VALUES ();
-INSERT INTO Contiene VALUES ();
-INSERT INTO Contiene VALUES ();
-INSERT INTO Contiene VALUES ();
-INSERT INTO Contiene VALUES ();
-INSERT INTO Contiene VALUES ();
-INSERT INTO Contiene VALUES ();
-INSERT INTO Contiene VALUES ();
-INSERT INTO Contiene VALUES ();
-INSERT INTO Contiene VALUES ();
-INSERT INTO Contiene VALUES ();
-INSERT INTO Contiene VALUES ();
-INSERT INTO Contiene VALUES ();
-INSERT INTO Contiene VALUES ();
+INSERT INTO Contiene VALUES (1,19);
+INSERT INTO Contiene VALUES (1,23);
+INSERT INTO Contiene VALUES (1,17);
+INSERT INTO Contiene VALUES (1,27);
+INSERT INTO Contiene VALUES (2,21);
+INSERT INTO Contiene VALUES (2,22);
+INSERT INTO Contiene VALUES (2,36);
+INSERT INTO Contiene VALUES (3,38);
+INSERT INTO Contiene VALUES (3,27);
+INSERT INTO Contiene VALUES (3,32);
+INSERT INTO Contiene VALUES (4,32);
+INSERT INTO Contiene VALUES (4,33);
+INSERT INTO Contiene VALUES (4,19);
+INSERT INTO Contiene VALUES (5,28);
+INSERT INTO Contiene VALUES (5,34);
+INSERT INTO Contiene VALUES (6,1);
+INSERT INTO Contiene VALUES (6,2);
+INSERT INTO Contiene VALUES (6,3);
+INSERT INTO Contiene VALUES (7,23);
+INSERT INTO Contiene VALUES (7,24);
+INSERT INTO Contiene VALUES (7,27);
+INSERT INTO Contiene VALUES (8,14);
+INSERT INTO Contiene VALUES (8,15);
+INSERT INTO Contiene VALUES (9,32);
+INSERT INTO Contiene VALUES (10,25);
+INSERT INTO Contiene VALUES (11,12);
+INSERT INTO Contiene VALUES (11,20);
+INSERT INTO Contiene VALUES (12,7);
+INSERT INTO Contiene VALUES (12,16);
+INSERT INTO Contiene VALUES (12,8);
+INSERT INTO Contiene VALUES (13,17);
+INSERT INTO Contiene VALUES (13,6);
+INSERT INTO Contiene VALUES (13,34);
+INSERT INTO Contiene VALUES (14,30);
+INSERT INTO Contiene VALUES (14,33);
+INSERT INTO Contiene VALUES (15,39);
+INSERT INTO Contiene VALUES (16,12);
+INSERT INTO Contiene VALUES (16,13);
+INSERT INTO Contiene VALUES (17,7);
+INSERT INTO Contiene VALUES (18,40);
+INSERT INTO Contiene VALUES (18,16);
+INSERT INTO Contiene VALUES (18,17);
+INSERT INTO Contiene VALUES (19,31);
+INSERT INTO Contiene VALUES (19,37);
+INSERT INTO Contiene VALUES (19,22);
+INSERT INTO Contiene VALUES (20,12);
+INSERT INTO Contiene VALUES (20,5);
+INSERT INTO Contiene VALUES (21,23);
+INSERT INTO Contiene VALUES (21,24);
+INSERT INTO Contiene VALUES (22,28);
+INSERT INTO Contiene VALUES (22,29);
+INSERT INTO Contiene VALUES (23,4);
+INSERT INTO Contiene VALUES (24,15);
+INSERT INTO Contiene VALUES (24,23);
+INSERT INTO Contiene VALUES (24,32);
+INSERT INTO Contiene VALUES (25,37);
+INSERT INTO Contiene VALUES (26,14);
+INSERT INTO Contiene VALUES (26,36);
+INSERT INTO Contiene VALUES (27,38);
+INSERT INTO Contiene VALUES (28,13);
+INSERT INTO Contiene VALUES (28,18);
+INSERT INTO Contiene VALUES (29,10);
+INSERT INTO Contiene VALUES (29,11);
+INSERT INTO Contiene VALUES (30,20);
