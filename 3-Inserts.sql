@@ -18,14 +18,14 @@
     -- Mixtos
     INSERT INTO Persona VALUES (11,'ajrbrothers@gmail.com','wh0kknows','2021/11/05','1990/08/27','Adam Met');
     INSERT INTO Persona VALUES (12,'davidparedes@gmail.com','leoparedesdeladrillo','2026-04-16','1995-06-28','David Paredes');
-    INSERT INTO Persona VALUES (13,'VicenteFernández456@gmail.com','vIceNtE_vincente','2026-12-24','1940 -02-17','Vicente Fernández');
+    INSERT INTO Persona VALUES (13,'VicenteFernández456@gmail.com','vIceNtE_vincente','2026-12-24','1940-02-17','Vicente Fernández');
     INSERT INTO Persona VALUES (14,'petemarssss@gmail.com','petethehorseishere','2026-10-21','1985-10-08','Peter Hernandez');
-    INSERT INTO Persona VALUES (15,'zupermanalejandra@gmail.com','mejordelaclase++','2025-09-11','1991-04-30','Jacques Webster');
-    INSERT INTO Persona VALUES (16,'prest0yelvis@gmail.com','%2134052%','2024-09-11','1958-08-29','Michael Jackson');
-    INSERT INTO Persona VALUES (17,'r1basm4r123@gmail.com','Miguel Martos .%*','2024-07-15','1991-02-01','Miguel Martos');
+    INSERT INTO Persona VALUES (15,'zupermanjacqa@gmail.com','mejordelaclase++','2025-09-11','1991-04-30','Jacques Webster');
+    INSERT INTO Persona VALUES (16,'elreydelpops@gmail.com','%2134052%','2024-09-11','1958-08-29','Michael Jackson');
+    INSERT INTO Persona VALUES (17,'miguelhartodetodo.com','Miguel Martos .%*','2024-07-15','1991-02-01','Miguel Martos');
     INSERT INTO Persona VALUES (18,'corderocorderito@gmail.com','$&alaparrilla&$','2024-02-01','1992-03-13','Juan Ozuna');
     INSERT INTO Persona VALUES (19,'cabellitorosita@gmail.com','krlgnzl.*%','2025-07-31','1965-02-18','Andre Young');
-    INSERT INTO Persona VALUES (20,'nosoyshakira@gmail.com','5123524','2025-07-25','1977-03-24','Javier Gutiérrez');
+    INSERT INTO Persona VALUES (20,'nosoyunloco@gmail.com','5123524','2025-07-25','1977-03-24','Javier Gutiérrez');
 
     --Artistas
     INSERT INTO Persona VALUES (21,'wakawakaeheh@gmail.com','saminaminaeheh123','2026-07-07','2000-05-03', 'Shakira  Mebarak');
@@ -134,7 +134,7 @@ INSERT INTO Album VALUES (6,16, 'Thriller', '1982-11-30');
 --Zarcort
 INSERT INTO Album VALUES (7,17, 'RECUERDOS DE MEDIA NOCHE', '2023-02-10');
 --Ozuna
-INSERT INTO Album VALUES (8,18, 'Odisea', '2017-08-225');
+INSERT INTO Album VALUES (8,18, 'Odisea', '2017-08-25');
 --Dr. Dre
 INSERT INTO Album VALUES (9,19, 'The Chronic', '1992-12-15');
 --Mala Fe
@@ -251,7 +251,7 @@ INSERT INTO Archivo_Audio VALUES (15,15,'https://ucvmusic.ucv.ve/stream/thriller
 --Zarcort
 INSERT INTO Archivo_Audio VALUES (16,16,'https://ucvmusic.ucv.ve/stream/playlove.mp3', 4.9, 'mp3', '/var/www/ucvmusic/media/zarcort/play_love.mp3', '320kbps');
 INSERT INTO Archivo_Audio VALUES (17,17, 'https://ucvmusic.ucv.ve/stream/solo.mp3', 5.5, 'mp3', '/var/www/ucvmusic/media/zarcort/solo.mp3', '320kbps');
-INSERT INTO Archivo_Audio VALUES (18,18, 'https://ucvmusic.ucv.ve/stream/mislagrimas.mp3', 5.2, 'mp3', '/var/www/ucvmusic/media/zarcort/mis_lagrimas.mp3', '320kbps';
+INSERT INTO Archivo_Audio VALUES (18,18, 'https://ucvmusic.ucv.ve/stream/mislagrimas.mp3', 5.2, 'mp3', '/var/www/ucvmusic/media/zarcort/mis_lagrimas.mp3', '320kbps');
 --Ozuna
 INSERT INTO Archivo_Audio VALUES (19,19, 'https://ucvmusic.ucv.ve/stream/tufoto.mp3', 4.4, 'mp3', '/var/www/ucvmusic/media/ozuna/tu_foto.mp3', '320kbps');
 INSERT INTO Archivo_Audio VALUES (20,20, 'https://ucvmusic.ucv.ve/stream/sepreparo.mp3', 4.3, 'mp3', '/var/www/ucvmusic/media/ozuna/se_preparo.mp3', '320kbps');
@@ -290,7 +290,7 @@ INSERT INTO Archivo_Audio VALUES (40,40, 'https://ucvmusic.ucv.ve/stream/laschic
 
 	-- id_playlist smallint NOT NULL,
 	    -- id_usuario_creador smallint NOT NULL,
-	    -- nombre varchar(20),
+	    -- nombre varchar(40),
 	    -- descripcion text,
 -- Inserts Playlist
 INSERT INTO Playlist VALUES (1,1,'Musica genial','Musica variada y con varios géneros para oír ');
@@ -366,70 +366,68 @@ INSERT INTO Escucha VALUES (20,7);
 INSERT INTO Escucha VALUES (20,8);
 INSERT INTO Escucha VALUES (20,3);
 
-	-- id_playlist_contiene smallint NOT NULL,
-	    -- id_cancion_contiene smallint NOT NULL, 
 -- Inserts Contiene
-INSERT INTO Contiene VALUES (1,19);
-INSERT INTO Contiene VALUES (1,23);
-INSERT INTO Contiene VALUES (1,17);
-INSERT INTO Contiene VALUES (1,27);
-INSERT INTO Contiene VALUES (2,21);
-INSERT INTO Contiene VALUES (2,22);
-INSERT INTO Contiene VALUES (2,36);
-INSERT INTO Contiene VALUES (3,38);
-INSERT INTO Contiene VALUES (3,27);
-INSERT INTO Contiene VALUES (3,32);
-INSERT INTO Contiene VALUES (4,32);
-INSERT INTO Contiene VALUES (4,33);
-INSERT INTO Contiene VALUES (4,19);
-INSERT INTO Contiene VALUES (5,28);
-INSERT INTO Contiene VALUES (5,34);
-INSERT INTO Contiene VALUES (6,1);
-INSERT INTO Contiene VALUES (6,2);
-INSERT INTO Contiene VALUES (6,3);
-INSERT INTO Contiene VALUES (7,23);
-INSERT INTO Contiene VALUES (7,24);
-INSERT INTO Contiene VALUES (7,27);
-INSERT INTO Contiene VALUES (8,14);
-INSERT INTO Contiene VALUES (8,15);
-INSERT INTO Contiene VALUES (9,32);
-INSERT INTO Contiene VALUES (10,25);
-INSERT INTO Contiene VALUES (11,12);
-INSERT INTO Contiene VALUES (11,20);
-INSERT INTO Contiene VALUES (12,7);
-INSERT INTO Contiene VALUES (12,16);
-INSERT INTO Contiene VALUES (12,8);
-INSERT INTO Contiene VALUES (13,17);
-INSERT INTO Contiene VALUES (13,6);
-INSERT INTO Contiene VALUES (13,34);
-INSERT INTO Contiene VALUES (14,30);
-INSERT INTO Contiene VALUES (14,33);
-INSERT INTO Contiene VALUES (15,39);
-INSERT INTO Contiene VALUES (16,12);
-INSERT INTO Contiene VALUES (16,13);
-INSERT INTO Contiene VALUES (17,7);
-INSERT INTO Contiene VALUES (18,40);
-INSERT INTO Contiene VALUES (18,16);
-INSERT INTO Contiene VALUES (18,17);
-INSERT INTO Contiene VALUES (19,31);
-INSERT INTO Contiene VALUES (19,37);
-INSERT INTO Contiene VALUES (19,22);
-INSERT INTO Contiene VALUES (20,12);
-INSERT INTO Contiene VALUES (20,5);
-INSERT INTO Contiene VALUES (21,23);
-INSERT INTO Contiene VALUES (21,24);
-INSERT INTO Contiene VALUES (22,28);
-INSERT INTO Contiene VALUES (22,29);
-INSERT INTO Contiene VALUES (23,4);
-INSERT INTO Contiene VALUES (24,15);
-INSERT INTO Contiene VALUES (24,23);
-INSERT INTO Contiene VALUES (24,32);
-INSERT INTO Contiene VALUES (25,37);
-INSERT INTO Contiene VALUES (26,14);
-INSERT INTO Contiene VALUES (26,36);
-INSERT INTO Contiene VALUES (27,38);
-INSERT INTO Contiene VALUES (28,13);
-INSERT INTO Contiene VALUES (28,18);
-INSERT INTO Contiene VALUES (29,10);
-INSERT INTO Contiene VALUES (29,11);
-INSERT INTO Contiene VALUES (30,20);
+INSERT INTO Contiene VALUES (1,19,'Por defecto');
+INSERT INTO Contiene VALUES (1,23,'Por artista (A - Z)');
+INSERT INTO Contiene VALUES (1,17,'Por artista (A - Z)');
+INSERT INTO Contiene VALUES (1,27,'Por defecto');
+INSERT INTO Contiene VALUES (2,21,'Por cancion (A - Z)');
+INSERT INTO Contiene VALUES (2,22,'Por album (A - Z)');
+INSERT INTO Contiene VALUES (2,36,'Por album (A - Z)');
+INSERT INTO Contiene VALUES (3,38,'Por album (A - Z)');
+INSERT INTO Contiene VALUES (3,27,'Por defecto');
+INSERT INTO Contiene VALUES (3,32,'Por artista (A - Z)');
+INSERT INTO Contiene VALUES (4,32,'Por defecto');
+INSERT INTO Contiene VALUES (4,33,'Por defecto');
+INSERT INTO Contiene VALUES (4,19,'Ascendente (A - Z)');
+INSERT INTO Contiene VALUES (5,28,'Por artista (A - Z)');
+INSERT INTO Contiene VALUES (5,34,'Ascendente (A - Z)');
+INSERT INTO Contiene VALUES (6,1,'Descendente (A - Z)');
+INSERT INTO Contiene VALUES (6,2,'Por artista (A - Z)');
+INSERT INTO Contiene VALUES (6,3,'Por artista (A - Z)');
+INSERT INTO Contiene VALUES (7,23,'Por artista (A - Z)');
+INSERT INTO Contiene VALUES (7,24,'Por album (A - Z)');
+INSERT INTO Contiene VALUES (7,27,'Por album (A - Z)');
+INSERT INTO Contiene VALUES (8,14,'Ascendente (A - Z)');
+INSERT INTO Contiene VALUES (8,15,'Ascendente (A - Z)');
+INSERT INTO Contiene VALUES (9,32,'Por artista (A - Z)');
+INSERT INTO Contiene VALUES (10,25,'Ascendente (A - Z)');
+INSERT INTO Contiene VALUES (11,12,'Por album (A - Z)');
+INSERT INTO Contiene VALUES (11,20,'Por defecto');
+INSERT INTO Contiene VALUES (12,7,'Por defecto');
+INSERT INTO Contiene VALUES (12,16,'Por defecto');
+INSERT INTO Contiene VALUES (12,8,'Ascendente (A - Z)');
+INSERT INTO Contiene VALUES (13,17,'Descendente (A - Z)');
+INSERT INTO Contiene VALUES (13,6,'Por album (A - Z)');
+INSERT INTO Contiene VALUES (13,34,'Descendente (A - Z)');
+INSERT INTO Contiene VALUES (14,30,'Ascendente (A - Z)');
+INSERT INTO Contiene VALUES (14,33,'Por cancion (A - Z)');
+INSERT INTO Contiene VALUES (15,39,'Por artista (A - Z)');
+INSERT INTO Contiene VALUES (16,12,'Por album (A - Z)');
+INSERT INTO Contiene VALUES (16,13,'Por defecto');
+INSERT INTO Contiene VALUES (17,7,'Descendente (A - Z)');
+INSERT INTO Contiene VALUES (18,40,'Por cancion (A - Z)');
+INSERT INTO Contiene VALUES (18,16,'Por cancion (A - Z)');
+INSERT INTO Contiene VALUES (18,17,'Por album (A - Z)');
+INSERT INTO Contiene VALUES (19,31,'Por album (A - Z)');
+INSERT INTO Contiene VALUES (19,37,'Por cancion (A - Z)');
+INSERT INTO Contiene VALUES (19,22,'Por artista (A - Z)');
+INSERT INTO Contiene VALUES (20,12,'Por artista (A - Z)');
+INSERT INTO Contiene VALUES (20,5,'Descendente (A - Z)');
+INSERT INTO Contiene VALUES (21,23,'Por artista (A - Z)');
+INSERT INTO Contiene VALUES (21,24,'Por cancion (A - Z)');
+INSERT INTO Contiene VALUES (22,28,'Por cancion (A - Z)');
+INSERT INTO Contiene VALUES (22,29,'Ascendente (A - Z)');
+INSERT INTO Contiene VALUES (23,4,'Por cancion (A - Z)');
+INSERT INTO Contiene VALUES (24,15,'Por artista (A - Z)');
+INSERT INTO Contiene VALUES (24,23,'Por defecto');
+INSERT INTO Contiene VALUES (24,32,'Descendente (A - Z)');
+INSERT INTO Contiene VALUES (25,37,'Ascendente (A - Z)');
+INSERT INTO Contiene VALUES (26,14,'Por artista (A - Z)');
+INSERT INTO Contiene VALUES (26,36,'Descendente (A - Z)');
+INSERT INTO Contiene VALUES (27,38,'Por artista (A - Z)');
+INSERT INTO Contiene VALUES (28,13,'Ascendente (A - Z)');
+INSERT INTO Contiene VALUES (28,18,'Por cancion (A - Z)');
+INSERT INTO Contiene VALUES (29,10,'Por defecto');
+INSERT INTO Contiene VALUES (29,11,'Ascendente (A - Z)');
+INSERT INTO Contiene VALUES (30,20,'Por cancion (A - Z)');

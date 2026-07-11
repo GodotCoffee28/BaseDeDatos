@@ -15,7 +15,7 @@ BEGIN
 	-- Si es de tipo premium, no pasa nada --
 	SELECT tipo INTO tipousuario
 	FROM Usuario
-	WHERE id_usuario = NEW.id_usuario_escucha;
+	WHERE id_usuario = NEW.id_usuario_creador;
 
 	IF tipousuario = 'Premium' THEN
 		RETURN NEW; -- Se retorna la nueva insersión como si nada
@@ -23,8 +23,8 @@ BEGIN
 
 	-- Si llegamos aqui signifca que el usuario es Gratis y contaremos cuantas playlist tiene hasta ahora
 	SELECT COUNT(*) INTO cantidadplaylist
-	FROM Escucha -- Cada vez que aparece el id_usuario en Escucha significa que tiene una playlist asociada
-	WHERE id_usuario_escucha = NEW.id_usuario_escucha;
+	FROM Playlist -- Cada vez que aparece el id_usuario en Escucha significa que tiene una playlist asociada
+	WHERE id_usuario_creador = NEW.id_usuario_creador;
 
 	IF(cantidadplaylist >= 3 ) THEN
 		RAISE EXCEPTION '| Error - Un usuario gratis no puede tener más de 3 playlist |';
@@ -34,7 +34,7 @@ END;
 $$;
 
 CREATE TRIGGER verificar_cantidad_playlist_usuario_gratis
-BEFORE INSERT ON Escucha
+BEFORE INSERT ON Playlist
 FOR EACH ROW
 EXECUTE FUNCTION verificar_cantidad_playlist_usuario_gratis();
 

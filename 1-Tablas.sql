@@ -14,10 +14,10 @@ DROP TABLE IF EXISTS Contiene CASCADE;
 CREATE TABLE Persona(
 	id_persona smallint NOT NULL,
 	email varchar(60),
-	contrasenia  varchar(30),
+	contrasenia  varchar(40),
 	fecha_registro date,
 	fecha_nacimiento date,
-	nombre varchar(20),
+	nombre varchar(40),
 
 	PRIMARY KEY(id_persona)
 );
@@ -43,10 +43,10 @@ CREATE TABLE Artista(
 CREATE TABLE Playlist(
 	id_playlist smallint NOT NULL,
 	id_usuario_creador smallint NOT NULL,
-	nombre varchar(20),
+	nombre varchar(40),
 	descripcion text,
 
-	PRIMARY KEY(id_playlist)
+	PRIMARY KEY(id_playlist),
 	FOREIGN KEY (id_usuario_creador) REFERENCES Usuario(id_usuario)
 );
 
@@ -54,7 +54,7 @@ CREATE TABLE Playlist(
 CREATE TABLE Album(
 	id_album smallint NOT NULL,
 	id_artista_album smallint NOT NULL,
-	titulo varchar(20),
+	titulo varchar(40),
 	fecha_lanzamiento date,
 
 	PRIMARY KEY(id_album),
@@ -64,8 +64,8 @@ CREATE TABLE Album(
 CREATE TABLE Cancion(
 	id_cancion smallint NOT NULL,
 	id_album_cancion smallint NOT NULL,
-	titulo varchar(20),
-	genero varchar(20),
+	titulo varchar(40),
+	genero varchar(40),
 	duracion_seg smallint,
 
 	PRIMARY KEY(id_cancion),
@@ -98,7 +98,7 @@ CREATE TABLE Escucha(
 CREATE TABLE Contiene(
 	id_playlist_contiene smallint NOT NULL,
 	id_cancion_contiene smallint NOT NULL, 
-	orden smallint NOT NULL,
+	orden varchar(40) NOT NULL,
 	
 	PRIMARY KEY(id_playlist_contiene, id_cancion_contiene),
 	FOREIGN KEY(id_playlist_contiene) REFERENCES Playlist(id_playlist) ON DELETE CASCADE,
