@@ -1,3 +1,4 @@
+
 -- Creaciones de tablas -- 
 
 DROP TABLE IF EXISTS Persona CASCADE;
@@ -29,7 +30,7 @@ CREATE TABLE Usuario(
 	tipo tipo_plan,
 
 	PRIMARY KEY(id_usuario),
-	FOREIGN KEY(id_usuario) REFERENCES  Persona(id_persona)
+	FOREIGN KEY(id_usuario) REFERENCES  Persona(id_persona) ON DELETE CASCADE
 );
 
 CREATE TABLE Artista(
@@ -37,7 +38,7 @@ CREATE TABLE Artista(
 	biografia text,
 
 	PRIMARY KEY(id_artista),
-	FOREIGN KEY(id_artista) REFERENCES Persona(id_persona)
+	FOREIGN KEY(id_artista) REFERENCES Persona(id_persona) ON DELETE CASCADE
 );
 
 CREATE TABLE Playlist(
@@ -47,7 +48,7 @@ CREATE TABLE Playlist(
 	descripcion text,
 
 	PRIMARY KEY(id_playlist),
-	FOREIGN KEY (id_usuario_creador) REFERENCES Usuario(id_usuario)
+	FOREIGN KEY (id_usuario_creador) REFERENCES Usuario(id_usuario) ON DELETE CASCADE
 );
 
 
@@ -58,7 +59,7 @@ CREATE TABLE Album(
 	fecha_lanzamiento date,
 
 	PRIMARY KEY(id_album),
-	FOREIGN KEY(id_artista_album) REFERENCES Artista(id_artista)
+	FOREIGN KEY(id_artista_album) REFERENCES Artista(id_artista) ON DELETE CASCADE
 );
 
 CREATE TABLE Cancion(
@@ -69,7 +70,7 @@ CREATE TABLE Cancion(
 	duracion_seg smallint,
 
 	PRIMARY KEY(id_cancion),
-	FOREIGN KEY(id_album_cancion) REFERENCES Album(id_album)
+	FOREIGN KEY(id_album_cancion) REFERENCES Album(id_album) ON DELETE CASCADE
 );
 
 CREATE TABLE Archivo_Audio(
@@ -82,7 +83,7 @@ CREATE TABLE Archivo_Audio(
 	calidad text,
 
 	PRIMARY KEY(id_audio,id_cancion_audio),
-	FOREIGN KEY(id_cancion_audio) REFERENCES Cancion(id_cancion)
+	FOREIGN KEY(id_cancion_audio) REFERENCES Cancion(id_cancion) ON DELETE CASCADE
 );
 
 CREATE TABLE Escucha(
@@ -103,10 +104,12 @@ CREATE TABLE Contiene(
 	PRIMARY KEY(id_playlist_contiene, id_cancion_contiene),
 	FOREIGN KEY(id_playlist_contiene) REFERENCES Playlist(id_playlist) ON DELETE CASCADE,
 	FOREIGN KEY(id_cancion_contiene) REFERENCES Cancion(id_cancion) ON DELETE CASCADE);
+
+
 ---Triggers---
 
 -- Usuario Gratis sin mas de 3 playlist -- 
-DROP TRIGGER IF EXISTS verificar_cantidad_playlist_usuario_gratis ON Escucha;
+DROP TRIGGER IF EXISTS verificar_cantidad_playlist_usuario_gratis ON Playlist;
 CREATE OR REPLACE FUNCTION verificar_cantidad_playlist_usuario_gratis()
 	RETURNS TRIGGER
 	LANGUAGE 'plpgsql'
@@ -171,7 +174,8 @@ CREATE TRIGGER verificar_cancion_reproducible
 BEFORE INSERT ON Contiene
 FOR EACH ROW
 EXECUTE FUNCTION verificar_cancion_reproducible();
----Garantizar que solo se añadan canciones reproducibles---
+
+
 ---Datos pertenecientes a las tablas---
 
 
@@ -216,6 +220,8 @@ EXECUTE FUNCTION verificar_cancion_reproducible();
 
 -- Inserts Usuarios
 
+	--Normales
+
     INSERT INTO Usuario VALUES (1, 'Gratis');
     INSERT INTO Usuario VALUES (2, 'Gratis');
     INSERT INTO Usuario VALUES (3, 'Gratis');
@@ -229,7 +235,7 @@ EXECUTE FUNCTION verificar_cancion_reproducible();
 	
     -- Mixtos
 	
-    INSERT INTO Usuario VALUES (11,'Gratis');
+    INSERT INTO Usuario VALUES (11,'Premium');
     INSERT INTO Usuario VALUES (12,'Gratis');
     INSERT INTO Usuario VALUES (13,'Gratis');
     INSERT INTO Usuario VALUES (14,'Premium');
@@ -295,7 +301,7 @@ EXECUTE FUNCTION verificar_cancion_reproducible();
 
 --Adam Met
 INSERT INTO Album VALUES (1,11, 'The Click', '2017-06-09'); 
---No tengo ni idea de qn es ese
+--David Paredes
 INSERT INTO Album VALUES (2,12, 'Heroes', '1977-10-14');
 --Vicente Fernández
 INSERT INTO Album VALUES (3,13, 'Para siempre', '2007-09-18');
@@ -309,6 +315,7 @@ INSERT INTO Album VALUES (6,16, 'Thriller', '1982-11-30');
 INSERT INTO Album VALUES (7,17, 'RECUERDOS DE MEDIA NOCHE', '2023-02-10');
 --Ozuna
 INSERT INTO Album VALUES (8,18, 'Odisea', '2017-08-25');
+INSERT INTO Album VALUES (21,18, 'Aura', '2017-08-24');
 --Dr. Dre
 INSERT INTO Album VALUES (9,19, 'The Chronic', '1992-12-15');
 --Mala Fe
@@ -329,6 +336,7 @@ INSERT INTO Album VALUES (16,26, 'Infinite', '1996-11-12');
 INSERT INTO Album VALUES (17,27, 'Origins', '2017-11-09');
 --Juanes
 INSERT INTO Album VALUES (18,28, 'Mi Sangre', '2004-09-28');
+INSERT INTO Album VALUES (22,28, 'La vida es un ratico', '2004-10-23');
 --Joey Montana
 INSERT INTO Album VALUES (19,29, 'Sin Cadenas', '2007-11-13');
 --Keyblade
@@ -341,7 +349,7 @@ INSERT INTO Album VALUES (20,30, 'Planeta Corazón', '2022-06-16');
 INSERT INTO Cancion VALUES (1,1, 'Bud Like You', 'Indie Pop', 230);
 INSERT INTO Cancion VALUES (2,1, 'Turning Out', 'Indie Pop', 266);
 INSERT INTO Cancion VALUES (3,1, 'Sober Up', 'Indie Pop', 231);
-
+--David Paredes
 INSERT INTO Cancion VALUES (4,2, 'Blackout', 'Art Rock', 220);
 INSERT INTO Cancion VALUES (5,2, 'Joe The Lion', 'Art Rock', 185);
 --Vicente Fernández
@@ -365,6 +373,8 @@ INSERT INTO Cancion VALUES (18,7, 'Mis lágrimas', 'Rap', 228);
 --Ozuna
 INSERT INTO Cancion VALUES (19,8, 'Tu foto', 'Reggaeton', 193);
 INSERT INTO Cancion VALUES (20,8, 'Se preparó', 'Reggaeton', 188);
+INSERT INTO Cancion VALUES (41,21, 'Vaina Loca', 'Reggaeton', 222);
+INSERT INTO Cancion VALUES (42,21, 'Haciéndolo', 'Reggaeton', 232);
 --Dr. Dre
 INSERT INTO Cancion VALUES (21,9,'Let Me Ride', 'Hip-Hop', 261);
 INSERT INTO Cancion VALUES (22,9,'The Chronic', 'Hip-Hop', 208);
@@ -393,6 +403,8 @@ INSERT INTO Cancion VALUES (36,16,'313', 'Hip-Hop', 251);
 INSERT INTO Cancion VALUES (37,17, 'Natural', 'Pop Rock', 189);
 --Juanes
 INSERT INTO Cancion VALUES (38,18, 'La Camisa Negra', 'Pop Latino', 216);
+INSERT INTO Cancion VALUES (43,22, 'Dos horas de: Me Enamora', 'Pop Latino', 7220);
+INSERT INTO Cancion VALUES (44,22, 'Dos horas de: Hoy Me Voy', 'Pop Latino', 7300);
 --Joey Montana
 INSERT INTO Cancion VALUES (39,19, 'Caramelo', 'Reggaeton', 211);
 --Keyblade
@@ -405,7 +417,7 @@ INSERT INTO Cancion VALUES (40,20, 'Las Chicas Me Ignoran', 'Rap', 165);
 INSERT INTO Archivo_Audio VALUES (1,1, 'https://ucvmusic.ucv.ve/stream/budlikeyou.mp3', 5.3, 'mp3', '/var/www/ucvmusic/media/bud_like_you.mp3', '320kbps');
 INSERT INTO Archivo_Audio VALUES (2,2, 'https://ucvmusic.ucv.ve/stream/turningout.mp3', 6.1, 'mp3', '/var/www/ucvmusic/media/turning_out.mp3', '320kbps');
 INSERT INTO Archivo_Audio VALUES (3,3, 'https://ucvmusic.ucv.ve/stream/soberup.mp3', 5.4, 'mp3', '/var/www/ucvmusic/media/sober_up.mp3', '320kbps');
-
+--David Paredes
 INSERT INTO Archivo_Audio VALUES (4,4, 'https://ucvmusic.ucv.ve/stream/blackout.mp3', 5.0, 'mp3', '/var/www/ucvmusic/media/davidbowie/blackout.mp3', '320kbps');
 INSERT INTO Archivo_Audio VALUES (5,5, 'https://ucvmusic.ucv.ve/stream/joethelion.mp3', 4.2, 'mp3', '/var/www/ucvmusic/media/davidbowie/joe_the_lion.mp3', '320kbps');
 --Vicente Fernández
@@ -429,6 +441,8 @@ INSERT INTO Archivo_Audio VALUES (18,18, 'https://ucvmusic.ucv.ve/stream/mislagr
 --Ozuna
 INSERT INTO Archivo_Audio VALUES (19,19, 'https://ucvmusic.ucv.ve/stream/tufoto.mp3', 4.4, 'mp3', '/var/www/ucvmusic/media/ozuna/tu_foto.mp3', '320kbps');
 INSERT INTO Archivo_Audio VALUES (20,20, 'https://ucvmusic.ucv.ve/stream/sepreparo.mp3', 4.3, 'mp3', '/var/www/ucvmusic/media/ozuna/se_preparo.mp3', '320kbps');
+INSERT INTO Archivo_Audio VALUES (41,41, 'https://ucvmusic.ucv.ve/stream/vainaloca.mp3', 4.1, 'mp3', '/var/www/ucvmusic/media/ozuna/vaina_loca.mp3', '320kbps');
+INSERT INTO Archivo_Audio VALUES (42,42, 'https://ucvmusic.ucv.ve/stream/haciendolo.mp3', 4.3, 'mp3', '/var/www/ucvmusic/media/ozuna/haciendolo.mp3', '320kbps');
 --Dr. Dre
 INSERT INTO Archivo_Audio VALUES (21,21, 'https://ucvmusic.ucv.ve/stream/letmeride.mp3', 6.0, 'mp3', '/var/www/ucvmusic/media/drdre/let_me_ride.mp3', '320kbps');
 INSERT INTO Archivo_Audio VALUES (22,22, 'https://ucvmusic.ucv.ve/stream/thechronic.mp3', 4.8, 'mp3', '/var/www/ucvmusic/media/drdre/the_chronic.mp3', '320kbps');
@@ -457,16 +471,16 @@ INSERT INTO Archivo_Audio VALUES (36,36, 'https://ucvmusic.ucv.ve/stream/313.mp3
 INSERT INTO Archivo_Audio VALUES (37,37, 'https://ucvmusic.ucv.ve/stream/natural.mp3', 4.3, 'mp3', '/var/www/ucvmusic/media/imaginedragons/natural.mp3', '320kbps');
 --Juanes
 INSERT INTO Archivo_Audio VALUES (38,38, 'https://ucvmusic.ucv.ve/stream/lacamisanegra.mp3', 4.9, 'mp3', '/var/www/ucvmusic/media/juanes/la_camisa_negra.mp3', '320kbps');
+INSERT INTO Archivo_Audio VALUES (43,43, 'https://ucvmusic.ucv.ve/stream/meenamora2h.mp3', 165.2, 'mp3', '/var/www/ucvmusic/media/juanes/me_enamora_2h.mp3', '320kbps');
+INSERT INTO Archivo_Audio VALUES (44,44, 'https://ucvmusic.ucv.ve/stream/hoymevoy2h.mp3', 167.5, 'mp3', '/var/www/ucvmusic/media/juanes/hoy_me_voy_2h.mp3', '320kbps');
 --Joey Montana
 INSERT INTO Archivo_Audio VALUES (39,39, 'https://ucvmusic.ucv.ve/stream/caramelo.mp3', 4.8, 'mp3', '/var/www/ucvmusic/media/joeymontana/caramelo.mp3', '320kbps');
 --Keyblade
 INSERT INTO Archivo_Audio VALUES (40,40, 'https://ucvmusic.ucv.ve/stream/laschicasmeignoran.mp3', 3.7, 'mp3', '/var/www/ucvmusic/media/keyblade/las_chicas_me_ignoran.mp3', '320kbps');
 
-	-- id_playlist smallint NOT NULL,
-	    -- id_usuario_creador smallint NOT NULL,
-	    -- nombre varchar(20),
-	    -- descripcion text,
+
 -- Inserts Playlist
+
 INSERT INTO Playlist VALUES (1,1,'Musica genial','Musica variada y con varios géneros para oír ');
 INSERT INTO Playlist VALUES (2,1,'Hip-Hop y Rap',' Playlist Dedicada especialmente a rap y hiphop de los mejores');
 INSERT INTO Playlist VALUES (3,1,'Musica  sabor latino','Lo mejor del mundo: Musica y la escencia latina');
@@ -499,6 +513,7 @@ INSERT INTO Playlist VALUES (29,18,'Multigenero','Varias canciones muchos genero
 INSERT INTO Playlist VALUES (30,18,'Como cuando te preparas','se preparó');
 
 --Inserts Escucha
+
 INSERT INTO Escucha VALUES (1,1);
 INSERT INTO Escucha VALUES (1,2);
 INSERT INTO Escucha VALUES (1,3);
@@ -541,6 +556,7 @@ INSERT INTO Escucha VALUES (20,8);
 INSERT INTO Escucha VALUES (20,3);
 
 -- Inserts Contiene
+
 INSERT INTO Contiene VALUES (1,19,'Por defecto');
 INSERT INTO Contiene VALUES (1,23,'Por artista (A - Z)');
 INSERT INTO Contiene VALUES (1,17,'Por artista (A - Z)');
@@ -605,3 +621,124 @@ INSERT INTO Contiene VALUES (28,18,'Por cancion (A - Z)');
 INSERT INTO Contiene VALUES (29,10,'Por defecto');
 INSERT INTO Contiene VALUES (29,11,'Ascendente (A - Z)');
 INSERT INTO Contiene VALUES (30,20,'Por cancion (A - Z)');
+INSERT INTO Contiene VALUES (4,41,'Por cancion (A - Z)');
+INSERT INTO Contiene VALUES (4,42,'Por cancion (A - Z)');
+INSERT INTO Contiene VALUES (20,43,'Descendente (A - Z)');
+INSERT INTO Contiene VALUES (25,44,'Por defecto');
+INSERT INTO Contiene VALUES (21,43,'Por defecto');
+
+-- Consultas
+
+
+-- 1. Obtener todos los usuarios que tienen un plan "Premium" y se registraron este año.
+SELECT P.*, U.tipo
+FROM Persona P
+INNER JOIN Usuario U ON P.id_persona = U.id_usuario
+WHERE P.fecha_registro >= DATE_TRUNC('year', CURRENT_DATE) AND U.tipo = 'Premium';
+
+
+-- 2. Mostrar el título de la canción, el nombre del álbum y el nombre del artista para todas las canciones de un artista en específico. 
+-- (elegir el artista de su preferencia para este caso)
+-- En este caso el artista Zarcort o id 17
+SELECT C.titulo AS Cancion, L.titulo AS Album, P.nombre AS Artista 
+FROM Artista A
+INNER JOIN Persona P ON A.id_artista = P.id_persona
+INNER JOIN Album L ON A.id_artista = L.id_artista_album
+INNER JOIN Cancion C ON L.id_album = C.id_album_cancion
+WHERE A.id_artista = 17;
+
+
+-- 3. Imprimir el nombre de cada álbum y su duración total de cada álbum (en minutos)
+SELECT L.titulo AS album, ROUND(SUM(C.duracion_seg) / 60.0, 2) AS Duracion_album
+FROM Album L
+INNER JOIN Cancion C ON L.id_album = C.id_album_cancion
+GROUP BY L.id_album, L.titulo;
+
+
+-- 4. Obtener el "Top 5" de los artistas más influyentes de la plataforma. 
+-- Se deben listar los nombres de los 5 artistas cuyas canciones han sido añadidas a la mayor cantidad de playlists distintas, 
+-- ordenados de mayor a menor cantidad de apariciones.
+SELECT P.nombre AS Artista
+FROM Persona P  
+INNER JOIN Artista A ON P.id_persona = A.id_artista
+INNER JOIN Album L ON A.id_artista = L.id_artista_album
+INNER JOIN Cancion C ON L.id_album = C.id_album_cancion
+INNER JOIN Contiene O ON C.id_cancion = O.id_cancion_contiene
+GROUP BY P.nombre, A.id_artista
+ORDER BY COUNT(DISTINCT O.id_playlist_contiene) DESC LIMIT 5;
+
+
+-- 5. Mostrar el nombre de la playlist, el nombre del usuario creador y la duración total de dicha  playlist (en un formato legible), 
+-- Las playlists creadas por usuarios con un plan "Premium" 
+--Duración acumulada sea estrictamente mayor a 2 horas.
+SELECT Pl.nombre AS Playlist, Persona.nombre AS Creador,TO_CHAR(MAKE_INTERVAL(secs => SUM(Cancion.duracion_seg)), 'HH24:MI:SS') AS duracion_total
+FROM Playlist Pl
+INNER JOIN Usuario ON Pl.id_usuario_creador = Usuario.id_usuario
+INNER JOIN Persona  ON Usuario.id_usuario = Persona.id_persona
+INNER JOIN Contiene ON Pl.id_playlist = Contiene.id_playlist_contiene
+INNER JOIN Cancion ON Contiene.id_cancion_contiene = Cancion.id_cancion
+WHERE Usuario.tipo = 'Premium'
+GROUP BY Pl.id_playlist, Pl.nombre, Persona.nombre
+HAVING SUM(Cancion.duracion_seg) > 7200;
+
+
+-- 6. Tabla vista “V_CancionAlbum” donde se especifiquen la cantidad de canciones y álbumes lanzados por artista por año
+CREATE OR REPLACE VIEW V_CancionAlbum AS SELECT 
+    Persona.nombre AS Artista,
+    EXTRACT(YEAR FROM Album.fecha_lanzamiento) AS Anio,
+    COUNT(DISTINCT Album.id_album) AS Cantidad_Albumes,
+    COUNT(Cancion.id_cancion) AS Cantidad_Canciones
+	
+FROM Persona
+
+INNER JOIN Artista ON Persona.id_persona = Artista.id_artista
+INNER JOIN Album ON Artista.id_artista = Album.id_artista_album
+INNER JOIN Cancion ON Album.id_album = Cancion.id_album_cancion
+GROUP BY Persona.id_persona, Persona.nombre, EXTRACT(YEAR FROM Album.fecha_lanzamiento);
+
+-- Para probar
+SELECT * FROM V_CancionAlbum;
+
+
+-- 7. Realizar 2 actualizaciones en 3 tablas distintas y 2 eliminaciones de registro en 2 tablas cualesquiera.
+
+--Las 2 actualizaciones de la tabla Canción 
+UPDATE Cancion
+SET duracion_seg = 235
+WHERE id_cancion = 1;
+
+UPDATE Cancion
+SET duracion_seg = 200
+WHERE id_cancion = 19;
+
+--Las 2 actualizaciones en la tabla Usuario
+UPDATE Usuario
+SET tipo= 'Premium'
+WHERE id_usuario = 1;
+
+UPDATE Usuario
+SET tipo = 'Gratis'
+WHERE id_usuario = 6;
+
+--Las 2 actualizaciones en la tabla Playlist
+UPDATE Playlist
+SET descripcion = 'Perdón que te salpique'
+WHERE id_playlist = 10;
+
+UPDATE Playlist
+SET descripcion = 'Gabriel y Ramses'
+WHERE id_playlist = 7;
+
+--2 eliminaciones en Canción
+DELETE FROM Cancion
+Where id_cancion = 3;
+
+DELETE FROM Cancion
+Where id_cancion= 18;
+
+--2 eliminaciones en Playlist
+DELETE FROM Playlist
+Where id_playlist= 17;
+
+DELETE FROM Playlist
+Where id_playlist= 13;
